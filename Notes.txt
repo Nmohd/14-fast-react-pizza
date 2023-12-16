@@ -1,0 +1,163 @@
+1.UseState 
++------------
+1. creating state 
+Simple
+based on function(lazy evaluation)
+
+const [ount, setCoutn]= UseState(
+    ()=> localStoreage.getItem('count')
+)
+2.updating function
++__________________
+simple way
+setCoutn(1000)
+Base on current state ( call back function it must be pure and return next state)
+setCoutn((c) => c+1)
+
+Refs
+________________
+Refs stands for reference  
+3 steps
+declare the ref( const inputEl= useRef(null))
+select the element(ref={inputEl})
+use in useeffect
+
+refs persisted across renders
+it has has a box named current 
+
+custom hooks are used for reusing the logic across the project
+custom hooks allow us to reuse state ful logic among different components
+Custom hooks name start with use keyword 
+Optional chaining ?.
+
+_________________________________
+Class components
+__+_+_+_+_____________+________+________________
+weather app started using class components 
+this keyword is very important
+
+Life cycle methods
+________________________________+________________________________
+Specials methods used to run side effects
+-component did mount(immediately as app loads)
+
+component did update(component re renders) 
+-It gives acces to previuos state 
+
+*Component will unmount (cleaning method)
+
+UseEffect solves this issue of spreading of mount and update.
+
+++++_____________________+++++________________________________
+React advance Redux started
+++++_________________________++++______________________________
+UseReducer 
+Another powerful way of managing state
+Important to understand Redux
+Transforming useState to useReducer
+useReducer takes the reducer function and initial state as arguments
+useReducer takes uses dispatch and action.
+useReducer returns the current state and dispatch 
+useReducer is avoids confusion and puts all logic in one central place
+State is immutable in React
+
+
+State 
+reducer: Pure funtion (no side effect) that takes current state and action, and returns the next state
+action  : Object that describes how to update state
+dispatch : Function to trigger state updates, by sending actions from event handlers to the reducer.
+
+
+Advance State Management 
+______________________________________
+Types of state (accessibility): Local vs global
+
+ 1.Local State
+  **Needed only by one or few components
+  **Only accessible in component and child components
+
+ 2.Global State
+  **Might be needed by many components
+  **Accessible to every component in the application 
+
+Types of state (domain) : UI vs remote
+
+ 1.Remote State 
+  ** All application data loaded form a remote server (APi)
+  ** Usually asynchonous
+  ** Needs re-fetching + updating
+
+ 2.UI State
+  ** Everything else
+  ** Theme, list filters, form data, etc.
+  ** Usually synchronous and stroed in the application. 
+
+-_________________________________________________________________
+  
+  PERFORMANCE OPTIMIZATION TOOLS IN REACT
+
+  1.Prevent wasted renders
+   *Memo 
+   *useMemo
+   *useCallback
+   *Passing elements as children or regular prop
+   
+  2. Improve app speed/responsiveness
+   *useMemo
+   *useCallback
+   *useTransition
+   
+  3. Reduce Bundle size
+   *Using fewer 3rd-party packages
+   *Code splitting and lazy loading
+
+
+  _________________________________________________________________
+Memo function (Memoization)
+
+*Optimization technique that executes a pure function once, and saves the result in memory. If we try to execute the function again with the same arguments
+as befor, the previously sved reult will be returned, without executing the fucntion again.
+
+*In javascript two objects or functions that look the same are actually differen ({} != {})
+
+ For solving this problem we have useMemo and useCallback hook. 
+ This two functions have a dependency array like useeffect. wheneever one dependency change the value will be re-created.
+
+
+* Setter functions have stable identity in react
+
+*** Read difference between useMemo and useCallback functions ***
+
+Why do we use different contexts for different works. Like post context and searchContext.
+It is because if post context updates it also updates the searchContext, which is bad for Optimization of the app. 
+(Basically to avoid wasted renders we dont combine contexts and keep them separate) 
+_________________________________________________________________________________________________
+Bundle and Code splitting
+ *Bundle: JS file containing the entire application code. Downloading the bundle will load the entire app at once, turning it into a SPA.
+ *Bundle Size :  Amount of JS users have to download to start using th e app. One of the most important things to be optimized, so that the budnle takes less time to download.
+ *Code Splitting : Splitting bundle into multiple parts that can be downloaded over time ("Lazy Loading")
+_________________________________________________________________________________________________
+
+UseEffect Rules and Best Practices
+* Include all reactive values in the dependency array.
+* Use eslint rule (package to see the dependency)
+* Do not use objects and arrays as dependencies.
+
+____________________________________________________________________________________________________
+Redux
+ * 3rd- Party library to manage global state.
+ * Standalone library, but easy to integrate with react apps using react- redux library.
+ * All globalstate is stored in one globally accessible store which is easy to update using "actions" (like useReducer).
+ * When store is updated all consuming componenets re-render. 
+ * It is conceptually similar to using the Context api ++ useReducer.
+ * Two "version " : (1) Classic Redux, (2) Modern Redux Toolkit
+
+Mechanism of the useReducer Hook 
+ * Event Handler in component ----------> dispatch -------> reducer(current state) ---- > Next State ----> Re-render.
+
+ Mechanism of the Redux Cycle
+ * Event Handler in component ----------> Action Creator Function ----------> dispatch -------> Store(global state, more reducer) ---- > Next State ----> Re-render.
+
+____________________________________________________________________________________________________
+Tailwind CSS
+
