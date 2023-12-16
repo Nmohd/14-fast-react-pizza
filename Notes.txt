@@ -159,5 +159,8 @@ Mechanism of the useReducer Hook
  * Event Handler in component ----------> Action Creator Function ----------> dispatch -------> Store(global state, more reducer) ---- > Next State ----> Re-render.
 
 ____________________________________________________________________________________________________
+React Router Dom for data loading
+_______________________________________
+
 Tailwind CSS
 
