@@ -9,7 +9,7 @@ function CartItem({ item }) {
 
   const currentQuantity = useSelector(getCurrentQuantityById(pizzaId));
 
-  console.log("from cartitem", pizzaId);
+  // console.log("from cartitem", pizzaId);
 
   return (
     <li className="py-3 sm:flex sm:items-center sm:justify-between">
