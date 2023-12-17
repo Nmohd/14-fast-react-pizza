@@ -1,6 +1,7 @@
 // Test ID: IIDSAT
 import { useLoaderData } from "react-router-dom";
 import { getOrder } from "../../services/apiRestaurant.js";
+import OrderItem from "./OrderItem.jsx";
 
 import {
   calcMinutesLeft,
@@ -60,7 +61,7 @@ function Order() {
   return (
     <div className="space-y-8 px-4 py-6">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="text-xl font-semibold">Status</h2>
+        <h2 className="text-xl font-semibold">Order # {id} Status</h2>
 
         <div className="space-x-2">
           {priority && (
@@ -84,6 +85,12 @@ function Order() {
           (Estimated delivery: {formatDate(estimatedDelivery)})
         </p>
       </div>
+
+      <ul className="dive-stone-200 divide-y border-b border-t">
+        {cart.map((item) => (
+          <OrderItem item={item} key={item.id} />
+        ))}
+      </ul>
 
       <div className="space-y-2 bg-stone-200 px-6 py-5">
         <p className="text-sm font-medium text-stone-600">
