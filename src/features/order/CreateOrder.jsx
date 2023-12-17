@@ -18,7 +18,7 @@ const isValidPhone = (str) =>
 function CreateOrder() {
   const [withPriority, setWithPriority] = useState(false);
   const {
-    username,
+    userName,
     status: addressStatus,
     position,
     address,
@@ -51,7 +51,7 @@ function CreateOrder() {
             className="input grow"
             type="text"
             name="customer"
-            defaultValue={username}
+            defaultValue={userName}
             required
           />
         </div>
